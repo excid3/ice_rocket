@@ -36,9 +36,13 @@ can use with the Search object:
     :lng or :language  - Language ("en", "de", etc)
     :n   or :per_page  - Number of items per page. Must be less than or equal to 50
 
+    search = IceRocket::Search.new("new york", :dl => Date.today - 2, :dh => Date.today, :per_page => 50)
+
 The fetch method also takes the following:
 
     :p or :page - The page number to retrieve
+
+    results = search.fetch :page => 3
 
 ## Contributing
 
