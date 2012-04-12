@@ -4,9 +4,9 @@ require File.expand_path('../lib/ice_rocket/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Chris Oliver"]
   gem.email         = ["excid3@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{A Rubygem for the IceRocket API}
+  gem.summary       = %q{A Rubygem for the IceRocket API}
+  gem.homepage      = "https://github.com/excid3/ice_rocket"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
