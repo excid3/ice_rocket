@@ -1,28 +1,37 @@
 require "ice_rocket/version"
+require "httparty"
 
 module IceRocket
   class Search
     include HTTParty
+    #debug_output $stderr
 
-    # format :xml
-    base_uri 'blogs.icerocket.com'
-    default_params :sourceid => 'bam', :rss => '1', :api => '1'
+    base_uri 'www.icerocket.com'
+    default_params :sourceid => 'bam', :api => '1'
 
-    attr_accessor :search_phrase, :results
+    attr_accessor :options
 
-    def initialize(search_term)
-      self.search_phrase  = search_term
-      self.results = []
+    def initialize(search_term, options={})
+      opts = {
+        :q   => search_term,
+        :dh  => options[:dh]  || options[:date_high],
+        :dl  => options[:dl]  || options[:date_low],
+        :lng => options[:lng] || options[:language],
+        :n   => options[:n]   || options[:per_page] || 10
+      }
+
+      opts[:dh] = opts[:dh].strftime("%m/%d/%Y") if opts[:dh]
+      opts[:dl] = opts[:dl].strftime("%m/%d/%Y") if opts[:dl]
+
+      self.options = opts
     end
 
-    def fetch(page=1)
-      # URI.escape()
-      options = { :query => { :q   => self.search_phrase,
-                              :n   => 10 } }
-                              # :p   => page,
-                              # :dl  => (Date.today - 2),
-                              # :dh  => (Date.today - 1) } )
-      self.results = self.class.get('/search', options)
+    def fetch(options={})
+      self.class.get('/search', params(options))
+    end
+
+    def params(options={})
+      { :query => self.options.merge( :p => options[:p] || options[:page] || 1 ) }
     end
   end
 end
