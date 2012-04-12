@@ -15,5 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = IceRocket::VERSION
 
-  gem.add_dependency = 'httparty', '~> 0.8.1'
+  gem.add_development_dependency 'httparty', '~> 0.8.1'
 end

@@ -27,5 +27,3 @@ module IceRocket
   end
 end
 
-results = IceRocket::Search.new('apple+notebook').fetch
-puts results.to_s
