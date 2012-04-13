@@ -44,6 +44,10 @@ The fetch method also takes the following:
 
     results = search.fetch :page => 3
 
+If you would like to add debugging messages to IceRocket:
+
+    IceRocket::Search.debug_output $stderr
+
 ## Contributing
 
 1. Fork it
