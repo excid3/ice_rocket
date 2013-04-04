@@ -7,7 +7,7 @@ module IceRocket
     #debug_output $stderr
 
     base_uri 'www.icerocket.com'
-    default_params :sourceid => 'bam', :api => '1'
+    default_params :api => '1'
 
     attr_accessor :options
 
@@ -17,7 +17,8 @@ module IceRocket
         :dh  => options[:dh]  || options[:date_high],
         :dl  => options[:dl]  || options[:date_low],
         :lng => options[:lng] || options[:language],
-        :n   => options[:n]   || options[:per_page] || 10
+        :n   => options[:n]   || options[:per_page] || 10,
+        :sourceid => options[:sourceid]
       }
 
       opts[:dh] = opts[:dh].strftime("%m/%d/%Y") if opts[:dh]

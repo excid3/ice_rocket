@@ -21,7 +21,7 @@ Or install it yourself as:
 Using the IceRocket API is as simple as creating a search object and
 then fetching pages of results:
 
-    search = IceRocket::Search.new("new york", :dl => Date.today - 2, :dh => Date.today, :per_page => 50)
+    search = IceRocket::Search.new("new york", :sourceid => "YOURSOURCEID", :dl => Date.today - 2, :dh => Date.today, :per_page => 50)
     results = search.fetch :page => 3
 
     results["rss"]["channel"]["totalResults"] # 13760
@@ -31,12 +31,13 @@ then fetching pages of results:
 There are a number of parameters and more readable equivalents that you
 can use with the Search object:
 
+    :sourceid          - Your source ID key
     :dh  or :date_high - Upper limit of the date filter
     :dl  or :date_low  - Lower limit of the date filter
     :lng or :language  - Language ("en", "de", etc)
     :n   or :per_page  - Number of items per page. Must be less than or equal to 50
 
-    search = IceRocket::Search.new("new york", :dl => Date.today - 2, :dh => Date.today, :per_page => 50)
+    search = IceRocket::Search.new("new york", :sourceid => "YOURSOURCEID", :dl => Date.today - 2, :dh => Date.today, :per_page => 50)
 
 The fetch method also takes the following:
 
